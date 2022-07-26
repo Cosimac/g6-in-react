@@ -3,6 +3,13 @@
   left: -300px;
   top: -100px;
 }
+.edgeDel {
+  width: 30px;
+  height: 30px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADESURBVHgBrVIBDcIwEPwuFTAJc0BRQFBAUABTwCTggOAACZWAA+aAOmAOyn3zCU/TNSPhku/9b3/53qeGFGKMHRVgjAk0B4hesQyn+yw+tGCOnfCIuMr/FWJAHNDHdcDUyaB4ouhoOdYWR/+LCJPGZF68OPHllEedM86cNzIl+ZLtPcBH8cr5kE9rKjdpM14kmsVfRZPKfVUkz2UP9iLcphVnsCpvReiFWXSnAix9rnLBek9UxtcGDR9ovoE2VEdA9GzhDdDWaUiLijqMAAAAAElFTkSuQmCC)
+    no-repeat center #fa7c78;
+  border-radius: 5px;
+}
 .edgeTitle {
   position: relative;
   top: 0;
@@ -43,9 +50,9 @@
   padding-left: 10px;
 }
 .nodeTooltips {
-  position: absolute;
-  left: -300px;
-  top: -100px;
+  /* position: absolute; */
+  /* left: -300px;
+  top: -100px; */
   /* width: 150px; */
   height: 160px;
   padding: 10px;

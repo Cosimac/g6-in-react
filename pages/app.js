@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { data } from './data';
 import G6 from '@antv/g6';
 import { NodeTooltips, EdgeToolTips, NodeContextMenu } from './component'
+import { Rect, Text, Circle, Image, Group, createNodeFromReact, appenAutoShapeListener } from '@antv/g6-react-node';
 import './registerShape';
 
-export default function() {
+export default function () {
   const ref = React.useRef(null)
   let graph = null
 
@@ -26,16 +27,17 @@ export default function() {
     // 监听edge上面mouse事件
     graph.on('edge:mouseenter', evt => {
       const { item, target } = evt
-      debugger
+      // debugger
       const type = target.get('type')
-      if(type !== 'text') {
+      if (type !== 'text') {
         return
       }
       const model = item.getModel()
       const { endPoint } = model
       // y=endPoint.y - height / 2，在同一水平线上，x值=endPoint.x - width - 10
-      const y = endPoint.y - 35
-      const x = endPoint.x - 150 - 10
+      const y = endPoint.y - 15
+      // const x = endPoint.x - 150 - 10
+      const x = endPoint.x
       const point = graph.getCanvasByPoint(x, y)
       setEdgeTooltipX(point.x)
       setEdgeTooltipY(point.y)
@@ -55,9 +57,9 @@ export default function() {
 
       setNodeToolTipX(point.x - 75)
       setNodeToolTipY(point.y + 15)
-      setShowNodeTooltip(true)
+      // setShowNodeTooltip(true)
     })
-  
+
     // 节点上面触发mouseleave事件后隐藏tooltip和ContextMenu
     graph.on('node:mouseleave', () => {
       setShowNodeTooltip(false)
@@ -77,17 +79,20 @@ export default function() {
   }
 
   useEffect(() => {
-    if(!graph) {
+    if (!graph) {
       const miniMap = new G6.Minimap()
       graph = new G6.Graph({
+        // fitView: true,
+        // fitViewPadding: [20, 40, 50, 20],
         container: ref.current,
-        width: 1200,
-        height: 800,
+        width: 1400,
+        height: 1000,
         modes: {
-          default: ['drag-canvas', 'drag-node']
+          default: ['drag-canvas']
         },
+        renderer: 'svg',
         defaultNode: {
-          shape: 'node',
+          shape: 'react-node',
           // 节点文本样式
           labelCfg: {
             style: {
@@ -119,16 +124,16 @@ export default function() {
         },
         layout: {
           type: 'dagre',
-          rankdir: 'LR',
-          nodesep: 30,
-          ranksep: 100
+          rankdir: 'TB',
+          nodesep: 60,
+          ranksep: 30
         },
         plugins: [miniMap]
       })
     }
-    
+
     graph.data(data)
-  
+
     graph.render()
 
     const edges = graph.getEdges()
@@ -141,15 +146,16 @@ export default function() {
       })
     })
     graph.paint()
+    appenAutoShapeListener(graph);
 
     bindEvents()
   }, [])
 
   return (
     <div ref={ref}>
-      { showEdgeTooltip && <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} /> }
-      { showNodeTooltip && <NodeTooltips x={nodeTooltipX} y={nodeTooltipY} /> }
-      { showNodeContextMenu && <NodeContextMenu x={nodeContextMenuX} y={nodeContextMenuY} /> }
+      {showEdgeTooltip && <EdgeToolTips x={edgeTooltipX} y={edgeTooltipY} />}
+      {showNodeTooltip && <NodeTooltips x={nodeTooltipX} y={nodeTooltipY} />}
+      {showNodeContextMenu && <NodeContextMenu x={nodeContextMenuX} y={nodeContextMenuY} />}
     </div>
   );
 }

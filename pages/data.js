@@ -2,39 +2,48 @@ export const data = {
   nodes: [
     {
       id: '1',
-      label: '公司1'
+      label: '公司1',
+      size: [250, 70]
     },
     {
       id: '2',
-      label: '公司2'
+      label: '公司2',
+      size: [250, 70]
     },
     {
       id: '3',
-      label: '公司3'
+      label: '公司3',
+      size: [250, 70]
     },
     {
       id: '4',
-      label: '公司4'
+      label: '公司4',
+      size: [250, 70]
     },
     {
       id: '5',
-      label: '公司5'
+      label: '公司5',
+      size: [250, 70]
     },
     {
       id: '6',
-      label: '公司6'
+      label: '公司6',
+      size: [250, 70]
     },
     {
       id: '7',
-      label: '公司7'
+      label: '公司7',
+      size: [250, 70]
     },
     {
       id: '8',
-      label: '公司8'
+      label: '公司8',
+      size: [250, 70]
     },
     {
       id: '9',
-      label: '公司9'
+      label: '公司9',
+      size: [250, 70]
     }
   ],
   edges: [
@@ -93,7 +102,7 @@ export const data = {
       }
     },
     {
-      source: '1',
+      source: '4',
       target: '8',
       data: {
         type: 'name2',
@@ -102,7 +111,7 @@ export const data = {
       }
     },
     {
-      source: '1',
+      source: '3',
       target: '9',
       data: {
         type: 'name3',
