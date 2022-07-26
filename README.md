@@ -5,8 +5,6 @@
 
 更详细的内容请参考[React中使用G6](https://www.yuque.com/antv/g6/zmfur7)文档。
 
-<img src="https://github.com/baizn/g6-in-react/blob/master/demo.gif" />
-
 ### 功能
 我们提供的Demo，包括了以下功能：
 - 自定义节点；
@@ -19,7 +17,7 @@
 ### Development
 ```
 # clone repo
-$ git clone https://github.com/baizn/g6-in-react.git
+$ git clone https://github.com/Cosimac/g6-in-react.git
 
 # install dependencies
 $ npm install
