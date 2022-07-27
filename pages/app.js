@@ -132,19 +132,48 @@ export default function () {
       })
     }
 
+    // 性能测试
+    let nodes = []
+    let edges = []
+    const num = 500
+    for (let i = 0; i < num; i++) {
+      nodes[i] = {
+        id: `node${i + 1}`, // String，可选，节点的唯一标识
+        // x: 40 + i,       // Number，必选，节点位置的 x 值
+        // y: 40 + i,       // Number，必选，节点位置的 y 值
+        // width: 80,   // Number，可选，节点大小的 width 值
+        // height: 40,  // Number，可选，节点大小的 height 值
+        label: `hello${i + 1}`, // String，节点标签
+      }
+      if (i < num - 1) {
+        edges[i] = {
+          source: `node${i + 1}`, // String，必须，起始节点 id
+          target: `node${i + 2}`, // String，必须，目标节点 id
+          data: {
+            type: 'name1',
+            amount: '100,000,000,00 元',
+            date: '2019-08-03'
+          }
+        }
+      }
+    }
+    let data = { nodes, edges }
+
+    console.log(data, 'data---2');
+
     graph.data(data)
 
     graph.render()
 
-    const edges = graph.getEdges()
-    edges.forEach(edge => {
-      const line = edge.getKeyShape()
-      const stroke = line.attr('stroke')
-      const targetNode = edge.getTarget()
-      targetNode.update({
-        style: { stroke }
-      })
-    })
+    // const edges = graph.getEdges()
+    // edges.forEach(edge => {
+    //   const line = edge.getKeyShape()
+    //   const stroke = line.attr('stroke')
+    //   const targetNode = edge.getTarget()
+    //   targetNode.update({
+    //     style: { stroke }
+    //   })
+    // })
     graph.paint()
     appenAutoShapeListener(graph);
 
